@@ -1,0 +1,108 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+
+header {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: $primary-white-color;
+  border: 1px solid $primary-border-color;
+  opacity: 0.97;
+  z-index: 1;
+}
+
+nav {
+  padding: 15px 0;
+  @include desktop {
+    @include grid {
+      grid-template-columns: auto 1fr; //nav phone & Nav Pages
+      grid-gap: 20px;
+    }
+  }
+  @include container(90%);
+  a {
+    display: block;
+  }
+}
+
+// NAV PHONE
+.nav {
+  &__phone {
+    @include grid {
+      grid-template-columns: 1fr auto; //logo & hamburger menu
+      align-items: center;
+    }
+  }
+  &__logo {
+    a {
+      text-decoration: none;
+      color: $primary-text-color;
+      font: bold 25px $logo-font;
+      &:hover {
+        color: $primary-blue-color;
+      }
+    }
+  }
+  &__hamburger {
+    @include button(auto, 45px, $primary-white-color, $primary-blue-color) {
+      border-radius: 50%;
+      box-shadow: inset 0px 0 0 3px $primary-white-color;
+      @include grid {
+        align-items: center;
+      }
+      &:hover {
+        box-shadow: inset 0px 0 0 3px $primary-text-color;
+      }
+      i {
+        font-size: 36px;
+      }
+    }
+    @include transition {
+      transition: 300ms ease all;
+    }
+    @include desktop {
+      display: none; // hide hamburger on desktop
+    }
+  }
+}
+// NAV PAGES
+#nav__pages-show {
+  display: none; // hide on phones,tablet show when clicked on the hamburger menu
+  @include zoom-in-animation(0.5s);
+  @include desktop {
+    display: block !important; // always show on desktop
+  }
+}
+.nav__pages {
+  ul {
+    margin: 0;
+    padding: 0;
+    background-color: $primary-white-color;
+  }
+  &-link {
+    list-style-type: none;
+    @include desktop {
+      display: inline-block; // links lined horizontally
+      margin: 0 13px;
+    }
+    :hover {
+      background-color: $primary-white-color;
+      color: $primary-blue-color;
+    }
+    &-anchor {
+      text-decoration: none;
+      color: $primary-text-color;
+      font-size: 20px;
+      padding: 7px;
+      font-weight: bold;
+
+      @include transition {
+        transition: 300ms ease-in all;
+      }
+    }
+  }
+}
+// active link
+.active {
+  color: $primary-blue-color;
+}

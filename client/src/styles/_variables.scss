@@ -1,0 +1,26 @@
+// Fonts
+$logo-font: 'Lato', sans-serif; // used on logo
+
+// colors
+$primary-text-color: rgb(33, 33, 33);
+$primary-white-color: rgb(255, 255, 255);
+$primary-blue-color: rgb(0, 110, 255);
+$primary-purple-color: rgb(128, 95, 238);
+
+$primary-border-color: rgba(212, 218, 228, 0.478);
+$primary-card-color: rgb(253, 252, 252);
+
+$primary-body-color: rgb(253, 252, 252);
+
+$addtask-icon-color: rgb(212, 218, 228);
+$progress-indicator-color: rgb(254, 93, 93);
+
+//Create Array of robotTypes and robotTypes colors to use in Card
+$robotTypes: (
+  'Unipedal' rgba(174, 0, 255, 0.589),
+  'Bipedal' rgb(65, 184, 254),
+  'Quadrupedal' rgb(70, 214, 223),
+  'Arachnid' rgba(254, 108, 125, 0.824),
+  'Radial' rgb(254, 165, 100),
+  'Aeronautical' rgb(140, 169, 252)
+);

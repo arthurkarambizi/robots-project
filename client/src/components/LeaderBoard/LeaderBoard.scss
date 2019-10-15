@@ -1,0 +1,78 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+.leaderboard {
+  @include container(90%); // width 90%
+  margin-top: 3%;
+  @include grid {
+    grid-gap: 25px;
+  }
+  @include desktop {
+    @include container(80%); // width 80%
+  }
+  @include zoom-in-animation(0.6s);
+}
+.leaderboard__tab {
+  text-align: center;
+  background-color: lighten($primary-blue-color, 10%);
+  color: $primary-white-color;
+  font-weight: bold;
+  @include box-shadow-2;
+  @include grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @include tablet {
+    grid-template-columns: 60px 100px repeat(3, 1fr);
+  }
+  @include desktop {
+    grid-template-columns: 100px 130px repeat(3, 1fr);
+  }
+}
+.leaderboard__card {
+  text-align: center;
+  h3,
+  p {
+    font-size: 16px;
+  }
+  @include grid {
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    grid-gap: 13px;
+  }
+  @include tablet {
+    grid-template-columns: 60px auto;
+  }
+  @include desktop {
+    grid-template-columns: 100px auto;
+  }
+  .card {
+    height: 70px;
+    padding: 8px;
+    @include grid {
+      grid-template-columns: 90px 3fr;
+      @include desktop {
+        grid-template-columns: 110px 3fr;
+      }
+      justify-items: stretch; //from Card justify-items: center
+      align-items: center;
+    }
+
+    .card__delete {
+      display: none; //hide on hover , from  Card .card__delete on hover display: block;
+    }
+    &__image {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+    }
+
+    &__info {
+      @include grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    &__button,
+    span {
+      display: none;
+    }
+  }
+}

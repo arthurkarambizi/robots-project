@@ -1,0 +1,125 @@
+$tablet: 768px;
+$desktop: 1092px;
+
+// Tablet devices
+@mixin tablet {
+  @media only screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+// Desktop devices
+@mixin desktop {
+  @media only screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+// Transitions
+@mixin transition {
+  @content;
+}
+
+// Container
+@mixin container($width) {
+  width: $width;
+  margin: 0 auto;
+}
+
+// GRId
+@mixin grid {
+  display: grid;
+  @content;
+}
+
+// Box shadows
+@mixin box-shadow-1 {
+  box-shadow: 0 14px 28px rgba(100, 94, 94, 0.157),
+    0 10px 10px rgba(100, 94, 94, 0.089);
+}
+@mixin box-shadow-2 {
+  box-shadow: 0 19px 38px rgba(100, 94, 94, 0.157),
+    0 15px 12px rgba(100, 94, 94, 0.123);
+}
+@mixin box-shadow-3 {
+  box-shadow: 0 8px 6px -6px rgba(42, 42, 42, 0.651);
+}
+@mixin box-shadow-card {
+  box-shadow: 5px 10px 20px rgba(100, 94, 94, 0.157);
+}
+
+//button
+@mixin button($width, $height, $color, $bg-color) {
+  width: $width;
+  height: $height;
+  outline: none;
+  color: $color;
+  background-color: $bg-color;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+  @content;
+}
+
+//modal-container
+@mixin modal-container {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.507);
+}
+
+//Animations
+@mixin nav-fade-animation($time) {
+  animation: navFadeAnimation $time;
+}
+@mixin zoom-in-animation($time) {
+  animation: zoomAnimation $time;
+}
+@mixin zoom-out-animation($time) {
+  animation: zoomOutAnimation $time;
+}
+// Keyframes
+@keyframes navFadeAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomAnimation {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOutAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}

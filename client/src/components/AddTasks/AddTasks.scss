@@ -1,0 +1,118 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+
+#task__add-container {
+    display: none;
+    @include zoom-in-animation(0.8s);
+}
+#task__add-progress-bar {
+    background-color: $primary-white-color;
+    border-radius: 0px 20px 20px 0px;
+    display: none;
+    height: 40px;
+    grid-column: span 2;
+    @include zoom-in-animation(0.1s);
+}
+
+#task__add-progress-bar-indicator {
+    width: 0%;
+    height: 100%;
+    background-color: $progress-indicator-color;
+    color: $primary-white-color;
+    border-radius: 0 30px 30px 0;
+    @include grid {
+        align-items: center;
+    }
+}
+.task__add {
+    @include container(80%);
+    color: $primary-white-color;
+    background-color: $primary-purple-color;
+    padding: 3% 2% 4% 5%;
+    font-size: 18px;
+    @include desktop {
+        width: 50%;
+    }
+    &-container {
+        z-index: 1; //for the header
+        @include modal-container;
+        @include grid {
+            align-items: center; //centering the .task__add-form
+        }
+    }
+    &-top {
+        @include grid {
+            grid-template-columns: 1fr auto;
+            align-items: center;
+        }
+        h2 {
+            margin: 0;
+        }
+        i {
+            font-size: 40px;
+            cursor: pointer;
+            &:hover {
+                color: $addtask-icon-color;
+            }
+        }
+        p {
+            i {
+                font-size: 25px;
+                display: inline-block;
+            }
+        }
+    }
+    &-progress-status {
+        grid-column: 2;
+    }
+}
+
+.task__add-form {
+    @include container(90%); // width 90%
+    @include grid {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+    &-checkboxes {
+        grid-column: span 2;
+        column-count: 2; //css columns for checkboxes order 1,2,3 ...
+    }
+    &-checkbox {
+        input[type='checkbox'] {
+            display: none;
+        }
+        input[type='checkbox'] + label:before {
+            content: 'check_box_outline_blank';
+            font-family: 'Material Icons';
+            font-size: 35px;
+        }
+        input:checked + label:before {
+            content: 'check_box';
+            font-family: 'Material Icons';
+            font-size: 35px;
+            @include zoom-in-animation(0.8s);
+        }
+        label {
+            @include grid {
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                grid-gap: 3px;
+            }
+        }
+    }
+    &-button-start,
+    &-button-save {
+        display: none;
+        @include zoom-in-animation(0.8s);
+    }
+    &-button-start {
+        @include button(70%, 40px, $primary-white-color, $primary-blue-color) {
+            @include box-shadow-2;
+        }
+    }
+    &-button-save {
+        @include button(70%, 40px, $primary-white-color, #77d2de) {
+            @include box-shadow-2;
+        }
+    }
+}

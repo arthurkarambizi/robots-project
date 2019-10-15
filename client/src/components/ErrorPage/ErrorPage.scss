@@ -1,0 +1,14 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+.error-page {
+  text-align: center;
+  height: 80vh;
+  @include grid {
+    align-items: center;
+  }
+  h1 {
+    font-size: 12em;
+    margin: 0;
+    color: $progress-indicator-color;
+  }
+}

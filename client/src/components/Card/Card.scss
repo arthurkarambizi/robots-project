@@ -1,0 +1,73 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+.card {
+  height: 150px;
+  padding: 12px;
+  border: 1px solid $primary-border-color;
+  border-radius: 10px;
+  text-align: center;
+  background-color: $primary-card-color;
+  &:hover {
+    .card__delete {
+      display: block;
+    }
+  }
+
+  @include box-shadow-card;
+  @include grid {
+    grid-template-columns: 105px auto;
+    justify-items: center;
+  }
+  &__image {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    @include box-shadow-3;
+  }
+  .card__info {
+    text-transform: capitalize;
+  }
+
+  button {
+    grid-column: 2;
+    margin: 0 auto; // center the button  width 70%
+    @include box-shadow-1;
+  }
+  p,
+  h3 {
+    margin: 0;
+    line-height: 30px;
+    font-weight: normal;
+  }
+}
+
+//Each loop to give colors to Card based on RobotType
+@each $robotType in $robotTypes {
+  .card--#{nth($robotType, 1)} {
+    position: relative; //for delete
+    .card__image {
+      border: 3px solid #{nth($robotType, 2)};
+    }
+    button {
+      @include button(70%, 40px, $primary-white-color, #{nth($robotType, 2)});
+    }
+    span {
+      font-weight: bolder;
+      color: #{nth($robotType, 2)};
+    }
+    .card__delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include desktop {
+        display: none;
+      }
+      @include zoom-out-animation(1.2s);
+      i {
+        font-size: 40px;
+        color: #{nth($robotType, 2)};
+        cursor: pointer;
+      }
+    }
+  }
+}

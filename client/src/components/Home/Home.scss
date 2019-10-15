@@ -1,0 +1,64 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+.home {
+  @include container(90%); // width 90%
+  @include zoom-in-animation(0.8s);
+  &__top {
+    @include grid {
+      grid-template-columns: auto;
+      align-items: center;
+      @include desktop {
+        grid-template-columns: auto 1fr;
+        grid-gap: 15px;
+      }
+    }
+    margin-bottom: 3%;
+    h1 {
+      color: $primary-text-color;
+      font-family: $logo-font;
+      font-size: 27px;
+      grid-column: span 2;
+      @include tablet {
+        grid-column: 1;
+      }
+    }
+    &-robot-types {
+      @include grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+        align-items: center;
+      }
+      @include tablet {
+        grid-template-columns: repeat(6, auto);
+      }
+      p {
+        padding-top: 5px;
+        @include grid {
+          grid-template-columns: auto 1fr;
+          grid-gap: 10px;
+        }
+      }
+      @each $robotType in $robotTypes {
+        .robot-type--#{nth($robotType, 1)}::before {
+          content: '';
+          background-color: #{nth($robotType, 2)};
+          height: 17px;
+          width: 17px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  &__cards--columns {
+    @include grid {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 15px;
+    }
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

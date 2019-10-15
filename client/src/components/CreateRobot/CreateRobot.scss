@@ -1,0 +1,90 @@
+@import './src/styles/mixins';
+@import './src/styles/variables';
+
+.create-robot {
+  border: 2px dashed $addtask-icon-color;
+  border-radius: 10px;
+  background-color: $primary-body-color;
+  @include box-shadow-card;
+  @include grid {
+    align-items: center; // align center + and add new robot
+  }
+  i {
+    font-size: 50px;
+    color: $addtask-icon-color;
+    cursor: pointer;
+    @include transition {
+      transition: all ease-in 0.3s;
+    }
+    &:hover {
+      color: $primary-blue-color;
+    }
+  }
+  &__add-new {
+    text-align: center;
+    p {
+      color: $primary-blue-color;
+    }
+  }
+}
+
+#create-robot__form-container {
+  display: none;
+  @include modal-container;
+  @include zoom-out-animation(0.8s);
+  z-index: 1; //for Card
+}
+.create-robot__form {
+  position: fixed;
+  transform: translate(15%, 25%); //positioning the form
+  width: 70%;
+  padding: 3% 4% 8% 4%;
+  color: $primary-white-color;
+  background-color: $primary-purple-color;
+  @include grid {
+    grid-gap: 3px;
+    align-items: center;
+  }
+  @include desktop {
+    width: 50%;
+    padding: 3%;
+    transform: translate(45%, 100%); //positioning the form
+  }
+  i {
+    color: $primary-white-color;
+    &:hover {
+      color: $addtask-icon-color;
+    }
+  }
+  &-top {
+    @include grid {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+  &-inputs {
+    @include grid {
+      grid-template-columns: repeat(1, 1fr);
+      grid-column: span;
+      grid-gap: 12px;
+    }
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    input,
+    select,
+    label {
+      display: block;
+      height: 40px;
+      width: 100%;
+    }
+    button {
+      @include button(100%, 40px, $primary-white-color, $primary-blue-color) {
+        @include box-shadow-2;
+      }
+    }
+  }
+}
