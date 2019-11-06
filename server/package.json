@@ -19,7 +19,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongodb": "^3.1.8",
-    "mongoose": "^5.1.6",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.18.9"
   }
 }
