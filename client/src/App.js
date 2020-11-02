@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 
 import Home from './components/Home/Home';
 import LeaderBoard from './components/LeaderBoard/LeaderBoard';
-import ErrorPage from './components/ErrorPage/ErrorPage';
+import NotFound from './components/NotFound/NotFound';
 
 class App extends Component {
   constructor(props) {
@@ -269,10 +269,10 @@ class App extends Component {
         component: () => <LeaderBoard robotsList={this.state.robotsList} />
       },
       {
-        name: 'ErrorPage',
+        name: 'NotFound',
         path: '',
         exact: false,
-        component: ErrorPage
+        component: NotFound
       }
     ];
     return (

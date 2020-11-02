@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './ErrorPage.scss';
-export default class ErrorPage extends Component {
+import './NotFound.scss';
+export default class NotFound extends Component {
   render() {
     return (
       <section className="error-page">
