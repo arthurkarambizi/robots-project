@@ -4,7 +4,6 @@ import './App.scss';
 
 import Header from './components/Header/Header';
 
-// ─── ALL PAGES  ────────
 import Home from './components/Home/Home';
 import LeaderBoard from './components/LeaderBoard/LeaderBoard';
 import ErrorPage from './components/ErrorPage/ErrorPage';
@@ -20,11 +19,6 @@ class App extends Component {
     this.appGetRobots();
   }
 
-  // ──────────────────────────────────────────────────────────────────── I ──────────
-  //   :::::: D A T A B A S E : :  :   :    :     :        :          :
-  //  ──────────────────────────────────────────────────────────────────────────────
-
-  // ─── GET ALL ROBOTS from http://localhost:5000/api/robots/  ────────
 
   appGetRobots = () => {
     fetch('http://localhost:5000/api/robots/', {
@@ -38,8 +32,6 @@ class App extends Component {
       });
     });
   };
-
-  // ─── POST/CREATE A ROBOT to http://localhost:5000/api/robots/  ─────────
 
   appPostRobot = event => {
     event.preventDefault();
@@ -74,8 +66,6 @@ class App extends Component {
     }
   };
 
-  // ─── DELETE A ROBOT from http://localhost:5000/api/robots/:id ─────────
-
   appDeleteRobot = robotId => {
     const url = `http://localhost:5000/api/robots/${robotId}`; //robot url
     fetch(url, {
@@ -88,12 +78,6 @@ class App extends Component {
     });
   };
 
-  // ──────────────────────────────────────────────────────────────────── II ──────────
-  //   ::::::  ADD T A S K S    : :  :   :    :     :
-  // ─────────────────────────────────────────────────────────────────────────────────
-
-  // ─── GET 5 CHECKED INPUTS AND SHOW START TASKS BUTTON
-  //────────────── step 1
 
   appSelectTasks = () => {
     // get the form elements we need to use
@@ -139,9 +123,6 @@ class App extends Component {
     const finalTasksArray = [selectedTasksArray, totalTimeArray]; // all 5 tasks and total tasks time
     return finalTasksArray; // return finalTasksArray for appAddTasksProgress() & appSendAddedTasks()
   };
-
-  // ─── Onclick the buttonStartTasks show Progress bar
-  //────────────── step 2
 
   appAddTasksProgress = event => {
     event.preventDefault();
@@ -196,9 +177,6 @@ class App extends Component {
       }
     }
   };
-
-  // ─── Progress bar 100% , send tasks to
-  //http://localhost:5000/api/robots/:id ──── step 3
 
   appSendAddedTasks = () => {
     // event.preventDefault();
@@ -268,8 +246,6 @@ class App extends Component {
   };
 
   render() {
-    // ─── ROUTES LIST ─────────────────────────────────────────
-
     const routes = [
       {
         name: 'Home',
