@@ -6,19 +6,12 @@ const express = require('express');
 
 const router = express.Router();
 
-//Robots model we need it to make querries,save ,find etc..
+// Robots model we need it to make querries, save ,find etc..
 
 const Robots = require('../../models/Robots');
 
 // '/' is  api/robots   because we have already  /routes/api/robots in server.js
 
-// ────────────────────────────────────────────────────────
-// :::::: ROBOTS : :  :   :    :     :        :          :
-// ────────────────────────────────────────────────────────
-
-// ───────────────────────────────────────────────────────────
-// GET api/robots , Get all robots
-// ────────────────────────────────────────────────────────────
 
 router.get('/', (req, res) => {
     // take the model
@@ -27,9 +20,6 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ success: false }));
 });
 
-// ──────────────────────────────────────────────────────────────
-//GET api/robots/:id, GET a robot
-// ──────────────────────────────────────────────────────────────
 
 router.get('/:id', (req, res) => {
     Robots.findById(req.params.id)
@@ -37,9 +27,6 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(404).json({ success: false }));
 });
 
-// ──────────────────────────────────────────────────────────────────
-// POST api/robots CREATE  a robot
-// ─────────────────────────────────────────────────────────────────
 
 router.post('/', (req, res) => {
     // create new robot from the Robots model
@@ -53,9 +40,6 @@ router.post('/', (req, res) => {
     newRobot.save().then(robot => res.json(robot));
 });
 
-// ──────────────────────────────────────────────────────────────────
-//  PUT api/robots/:id, UPdate a robot
-// ───────────────────────────────────────────────────────────────────
 
 router.put('/:id', (req, res) => {
     Robots.findByIdAndUpdate(
@@ -78,9 +62,6 @@ router.put('/:id', (req, res) => {
     ).then();
 });
 
-// ─────────────────────────────────────────────────────────────────
-// DELETE api/robots/:id, DELETE a robot
-// ────────────────────────────────────────────────────────────────────
 
 router.delete('/:id', (req, res) => {
     // req.params.id fetch the id from the uri
@@ -89,8 +70,4 @@ router.delete('/:id', (req, res) => {
         .catch(err => res.status(404).json({ success: false }));
 });
 
-//──────────────────────────────────────────────────────────────────
-//export so that other files
-// can read what is in this file
-//───────────────────────────────────────────────────────────────────
 module.exports = router;
